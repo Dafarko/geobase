@@ -27,19 +27,19 @@
                 </div>
                 <!-- /.box-header -->
                 <!-- form start -->
-                <form role="form">
-                    <div class="box-body">
-                        <div class="form-group">
-                            <label for="name">Название нас. пункта</label>
-                            <input type="text" class="form-control" id="name" placeholder="Введите название">
-                        </div>
+                {!! Form::open(['route' => 'get-cities', 'method' => 'post'])  !!}
+                <div class="box-body">
+                    <div class="form-group">
+                        <label for="name">Название нас. пункта</label>
+                        <input type="text" class="form-control" id="name" name="name" placeholder="Введите название">
                     </div>
-                    <!-- /.box-body -->
+                </div>
+                <!-- /.box-body -->
 
-                    <div class="box-footer">
-                        <button type="submit" class="btn btn-primary">Подтвердить</button>
-                    </div>
-                </form>
+                <div class="box-footer">
+                    <button type="submit" class="btn btn-primary">Подтвердить</button>
+                </div>
+                {!! Form::close() !!}
             </div>
         </div>
     </div>
