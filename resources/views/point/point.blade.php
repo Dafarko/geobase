@@ -27,16 +27,24 @@
                 </div>
                 <!-- /.box-header -->
                 <!-- form start -->
-                <form role="form">
+                {!! Form::open(['route' => 'get-nearby', 'method' => 'post'])  !!}
                     <div class="box-body">
                         <div class="form-group">
                             <label for="name">Название нас. пункта</label>
-                            <input type="text" class="form-control" id="name" placeholder="Введите название">
+                            <input type="text" class="form-control" id="name" name="name" placeholder="Введите название">
                         </div>
                         <div class="form-group">
                             <div class="row">
                                 <div class="col-xs-3">
-                                    <laber for="radius"><strong>Радиус: </strong></laber>
+                                    <laber for="rows"><strong>Количество строк: </strong></laber>
+                                    <input type="text" name="rows" class="form-control" placeholder="Кол-во строк">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-xs-3">
+                                    <laber for="radius"><strong>Радиус: до 300км</strong></laber>
                                     <input type="text" name="radius" class="form-control" placeholder="Радиус">
                                 </div>
                             </div>
@@ -47,7 +55,7 @@
                     <div class="box-footer">
                         <button type="submit" class="btn btn-primary">Подтвердить</button>
                     </div>
-                </form>
+                {!! Form::close() !!}
             </div>
         </div>
     </div>

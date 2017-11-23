@@ -6,12 +6,12 @@
             <!-- Widget: user widget style 1 -->
             <div class="box box-widget widget-user-2">
                 <!-- Add the bg color to the header using any of the bg-* classes -->
-                <div class="widget-user-header bg-yellow">
+                <div class="widget-user-header bg-blue">
                     <div class="widget-user-image">
-                        <img class="img-circle" src="../dist/img/earth.png" alt="User Avatar">
+                        <img class="img-circle" src="../dist/img/placeholder.png" alt="User Avatar">
                     </div>
                     <!-- /.widget-user-image -->
-                    <h3 class="widget-user-username">Страны</h3>
+                    <h3 class="widget-user-username">Ближайщие пункты</h3>
                     <h5 class="widget-user-desc">Вся информация</h5>
                 </div>
             </div>
@@ -23,7 +23,7 @@
         <div class="col-xs-12">
             <div class="box">
                 <div class="box-header">
-                    <h3 class="box-title">Responsive Hover Table</h3>
+                    <h3 class="box-title">Ближайщие пункты</h3>
 
                     <div class="box-tools">
                         <div class="input-group input-group-sm" style="width: 150px;">
@@ -39,31 +39,27 @@
                 <div class="box-body table-responsive no-padding">
                     <table class="table table-hover">
                         <tr>
-                            <th>ID</th>
-                            <th>Код</th>
+                            <th>Geo ID</th>
+                            <th>Дистанция</th>
                             <th>Название</th>
-                            <th>Валюта</th>
-                            <th>FIPS</th>
-                            <th>ISO</th>
-                            <th>Север</th>
-                            <th>Юг</th>
-                            <th>Запад</th>
-                            <th>Восток</th>
-                            <th>Столица</th>
-                            <th>Континент</th>
-                            <th>Префикс конт.</th>
-                            <th>Языки</th>
-                            <th>GEO ID</th>
-                            <th>Население</th>
-                            <th>Площадь</th>
+                            <th>Страна</th>
+                            <th>Тип</th>
+                            <th>Lat</th>
+                            <th>Lng</th>
+                            <th>Тип пункта</th>
                         </tr>
-                            @for ($i = 1; $i < count($countryInfo); $i++)
+                            @foreach($infoPlace as $info)
                             <tr>
-                                @foreach($countryInfo[$i] as $info)
-                                    <td>{!! $info !!}</td>
-                                @endforeach
+                                <td>{{ $info -> geonameId }}</td>
+                                <td>{{ $info -> distance }}</td>
+                                <td>{{ $info -> name }}</td>
+                                <td>{{ $info -> countryName }}</td>
+                                <td>{{ $info -> fclName }}</td>
+                                <td>{{ $info -> lat }}</td>
+                                <td>{{ $info -> lng }}</td>
+                                <td>{{ $info -> fcode }}</td>
                             </tr>
-                            @endfor
+                            @endforeach
                     </table>
                 </div>
                 <!-- /.box-body -->
