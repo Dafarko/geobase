@@ -23,25 +23,32 @@
         <div class="col-md-6">
             <div class="box box-primary">
                 <div class="box-header with-border">
-                    <h3 class="box-title">Введите название нас. пункта</h3>
+                    <h3 class="box-title">Ввыберите параметры</h3>
                 </div>
                 <!-- /.box-header -->
                 <!-- form start -->
-                <form role="form">
+                {!! Form::open(['route' => 'search-params', 'method' => 'post'])  !!}
                     <div class="box-body">
-                        <div class="form-group">
-                            <label for="name">Название нас. пункта</label>
-                            <input type="text" class="form-control" id="name" placeholder="Введите название">
+                        {{--<div class="form-group">
+                            <label for="type">Выбирите то что будете искать</label>
+                            <select name="type">
+                                <option value="country">Страна</option>
+                                <option value="city">Нас. пункт</option>
+                            </select>
                         </div>
+                        <div class="form-group">
+                            <label for="name">Введите название</label>
+                            <input type="text" class="form-control" id="name" placeholder="Введите название">
+                        </div>--}}
                         <div class="form-group">
                             <div class="row">
                                 <div class="col-xs-3">
-                                    <laber for="from"><strong>Население: От</strong></laber>
-                                    <input type="text" name="n-from" class="form-control" placeholder="От">
+                                    <laber for="pfrom"><strong>Население: От</strong></laber>
+                                    <input type="text" name="pfrom" class="form-control" placeholder="От">
                                 </div>
                                 <div class="col-xs-3">
-                                    <laber for="to"><strong>Население: До</strong></laber>
-                                    <input type="text" name="n-to" class="form-control" placeholder="До">
+                                    <laber for="pto"><strong>Население: До</strong></laber>
+                                    <input type="text" name="pto" class="form-control" placeholder="До">
                                 </div>
                             </div>
                         </div>
@@ -63,7 +70,7 @@
                     <div class="box-footer">
                         <button type="submit" class="btn btn-primary">Подтвердить</button>
                     </div>
-                </form>
+                {!! Form::close() !!}
             </div>
         </div>
     </div>

@@ -29,9 +29,15 @@
                 <!-- form start -->
                 {!! Form::open(['route' => 'get-country', 'method' => 'post'])  !!}
                     <div class="box-body">
-                        <div class="form-group">
-                            <label for="name_en">Название страны</label>
-                            <input type="text" class="form-control" id="name_en" name="name_en" placeholder="Введите название">
+                        <div class="bs-example">
+                            <div class="input-group">
+                                <label for="name_en">Введите название страны</label>
+                                <input type="text" class="form-control" name="name_en" autocomplete="off" placeholder="Начните ввод ..." name="search" id="search">
+                            </div>
+                                <ul class="list-group" id="result">
+                                    {{--Тут будет результат поиска--}}
+                                </ul>
+                            <br>
                         </div>
                     </div>
                     <!-- /.box-body -->
@@ -43,4 +49,23 @@
             </div>
         </div>
     </div>
+
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $('#search').keyup(function(event) {
+                /*$.ajaxSetup({ cache: false });*/
+                $('#result').html('');
+                var searchField = $('#search').val();
+                var expression = new RegExp(searchField, "i");
+                $.getJSON('/country-search',function(data) {
+                    $.each(data, function(key, value) {
+                        if (value.CountryName.search(expression) != -1)
+                        {
+                            $('#result').append('<li class="list-group-item link-class">'+value.CountryName+'</a></li>');
+                        }
+                    });
+                });
+            });
+        });
+    </script>
 @stop

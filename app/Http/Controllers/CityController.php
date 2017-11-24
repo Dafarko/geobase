@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 
 class CityController extends Controller
 {
@@ -24,5 +23,17 @@ class CityController extends Controller
                  'lat' => $jsonData -> result -> Lat,
                  'lng' => $jsonData -> result -> Lng];
         return view('city.city-video', $data);
+    }
+
+    public function tableSearch(){
+        $curlSession = curl_init();
+        curl_setopt($curlSession, CURLOPT_URL, 'http://localhost:9000/cities');
+        curl_setopt($curlSession, CURLOPT_BINARYTRANSFER, true);
+        curl_setopt($curlSession, CURLOPT_RETURNTRANSFER, true);
+
+        $jsonData = json_decode(curl_exec($curlSession));
+        curl_close($curlSession);
+
+        return Response($jsonData -> result);
     }
 }

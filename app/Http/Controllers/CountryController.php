@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Unirest;
+use Illuminate\Support\Facades\DB;
 
 
 class CountryController extends Controller
@@ -28,7 +28,7 @@ class CountryController extends Controller
         }
 
         $curlSession = curl_init();
-        curl_setopt($curlSession, CURLOPT_URL, 'http://api.geonames.org/countryInfoJSON?formatted=true&lang=it&country='.$row[2].'&username=romaha&style=full');
+        curl_setopt($curlSession, CURLOPT_URL, 'http://api.geonames.org/countryInfoJSON?formatted=true&lang=en&country='.$row[2].'&username=romaha&style=full');
         curl_setopt($curlSession, CURLOPT_BINARYTRANSFER, true);
         curl_setopt($curlSession, CURLOPT_RETURNTRANSFER, true);
 
@@ -84,5 +84,18 @@ class CountryController extends Controller
 
         $data = ['countryInfo' => $row];
         return view('country.country-all', $data);
+    }
+
+    public function tableSearch(){
+
+        $curlSession = curl_init();
+        curl_setopt($curlSession, CURLOPT_URL, 'http://localhost:9000/countries');
+        curl_setopt($curlSession, CURLOPT_BINARYTRANSFER, true);
+        curl_setopt($curlSession, CURLOPT_RETURNTRANSFER, true);
+
+        $jsonData = json_decode(curl_exec($curlSession));
+        curl_close($curlSession);
+
+        return Response($jsonData -> result);
     }
 }

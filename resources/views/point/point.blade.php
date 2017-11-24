@@ -30,12 +30,18 @@
                 {!! Form::open(['route' => 'get-nearby', 'method' => 'post'])  !!}
                     <div class="box-body">
                         <div class="form-group">
-                            <label for="name">Название нас. пункта</label>
-                            <input type="text" class="form-control" id="name" name="name" placeholder="Введите название">
+                            <div class="input-group">
+                                <label for="name">Введите название нас. пункта</label>
+                                <input type="text" class="form-control" name="name" autocomplete="off" placeholder="Начните ввод ..." name="search" id="search">
+                            </div>
+                            <ul class="list-group" id="result">
+                                {{--Тут будет результат поиска--}}
+                            </ul>
+                            <br>
                         </div>
                         <div class="form-group">
                             <div class="row">
-                                <div class="col-xs-3">
+                                <div class="col-xs-5">
                                     <laber for="rows"><strong>Количество строк: </strong></laber>
                                     <input type="text" name="rows" class="form-control" placeholder="Кол-во строк">
                                 </div>
@@ -43,7 +49,7 @@
                         </div>
                         <div class="form-group">
                             <div class="row">
-                                <div class="col-xs-3">
+                                <div class="col-xs-5">
                                     <laber for="radius"><strong>Радиус: до 300км</strong></laber>
                                     <input type="text" name="radius" class="form-control" placeholder="Радиус">
                                 </div>
@@ -59,4 +65,22 @@
             </div>
         </div>
     </div>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $('#search').keyup(function(event) {
+                /*$.ajaxSetup({ cache: false });*/
+                $('#result').html('');
+                var searchField = $('#search').val();
+                var expression = new RegExp(searchField, "i");
+                $.getJSON('/city-search',function(data) {
+                    $.each(data, function(key, value) {
+                        if (value.Name.search(expression) != -1)
+                        {
+                            $('#result').append('<li class="list-group-item link-class">'+value.Name+'</a></li>');
+                        }
+                    });
+                });
+            });
+        });
+    </script>
 @stop

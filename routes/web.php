@@ -9,4 +9,6 @@ Route::post('/city', 'CityController@getCities')->name("get-cities");
 Route::get('/point', 'PointController@index');
 Route::post('/point', 'PointController@getNearby')->name("get-nearby");
 Route::get('/search', 'SearchController@index');
-Route::get('/country-search', 'CountryController@liveSearch')->name("live-search");
+Route::post('/search', 'SearchController@getSearch')->name("search-params");
+Route::get('/country-search', 'CountryController@tableSearch');
+Route::get('/city-search', 'CityController@tableSearch');
