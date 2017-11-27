@@ -49,6 +49,41 @@
             </div>
         </div>
     </div>
+
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="box">
+                <div class="box-header">
+                    <h3 class="box-title">Информация о населеном пункте</h3>
+                </div>
+                <!-- /.box-header -->
+                <div class="box-body table-responsive no-padding">
+                    <table class="table table-hover">
+                        <tr>
+                            <th>GeonameID</th>
+                            <th>Название</th>
+                            <th>К. страны</th>
+                            <th>Lng</th>
+                            <th>Lat</th>
+                            <th>Тип</th>
+                            <th>Топоним</th>
+                            <th>FcodeName</th>
+                            <th>Wikipedia</th>
+                            <th>Население</th>
+                        <tr id="info">
+                        </tr>
+                    </table>
+                </div>
+                <!-- /.box-body -->
+            </div>
+            <!-- /.box -->
+        </div>
+    </div>
+
+    <div id="map"></div>
+    <script async defer
+            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAQSIzUItqXEdUbpBvp9TUBCMHZLuWU6oI&callback=initMap">
+    </script>
     <script type="text/javascript">
         $(document).ready(function() {
             $('#search').keyup(function(event) {
@@ -64,6 +99,39 @@
                         }
                     });
                 });
+            });
+        });
+    </script>
+    <script>
+        $(function() {
+            $('form').submit(function(e) {
+                var $form = $(this);
+                $.ajax({
+                    type: $form.attr('method'),
+                    url: $form.attr('action'),
+                    data: $form.serialize()
+                }).done(function(data) {
+
+                    $("#info").empty();
+                    for (var key in data.cityInfo) {
+                        $("#info").append("<td>"+data.cityInfo[key]+"</td>");
+                    }
+
+                    var uluru = {lat: parseFloat(data.lat), lng: parseFloat(data.lng)};
+                    var map = new google.maps.Map(document.getElementById('map'), {
+                        zoom: 8,
+                        center: uluru
+                    });
+                    var marker = new google.maps.Marker({
+                        position: uluru,
+                        map: map
+                    });
+
+                }).fail(function() {
+                    console.log('fail');
+                });
+                //отмена действия по умолчанию для кнопки submit
+                e.preventDefault();
             });
         });
     </script>

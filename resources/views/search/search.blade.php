@@ -52,18 +52,6 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="form-group">
-                            <div class="row">
-                                <div class="col-xs-3">
-                                    <laber for="from"><strong>Площадь: От</strong></laber>
-                                    <input type="text" name="p-from" class="form-control" placeholder="От">
-                                </div>
-                                <div class="col-xs-3">
-                                    <laber for="to"><strong>Площадь: До</strong></laber>
-                                    <input type="text" name="p-to" class="form-control" placeholder="До">
-                                </div>
-                            </div>
-                        </div>
                     </div>
                     <!-- /.box-body -->
 

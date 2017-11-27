@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Auth\Access\Response;
 
 
 class CountryController extends Controller
@@ -64,7 +65,7 @@ class CountryController extends Controller
                  'area' => $area,
                  'lat' => $lat,
                  'lng' => $lng];
-        return view('country.country-video', $data);
+        return $data;
     }
 
     public function getAllCountry(){

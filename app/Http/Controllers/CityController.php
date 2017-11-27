@@ -22,7 +22,7 @@ class CityController extends Controller
         $data = ['cityInfo' => $jsonData -> result,
                  'lat' => $jsonData -> result -> Lat,
                  'lng' => $jsonData -> result -> Lng];
-        return view('city.city-video', $data);
+        return $data;
     }
 
     public function tableSearch(){
