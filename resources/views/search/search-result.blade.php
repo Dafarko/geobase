@@ -31,11 +31,11 @@
                             <th>Код страны</th>
                             <th>Lng</th>
                             <th>Lat</th>
-                            <th>Название</th>
-                            <th>Название</th>
-                            <th>Название</th>
-                            <th>Название</th>
-                            <th>Название</th>
+                            <th>FclName</th>
+                            <th>Топоним</th>
+                            <th>FcodeName</th>
+                            <th>Wikipedia</th>
+                            <th>Население</th>
                         </tr>
                             @foreach($countryInfo as $info)
                             <tr>
