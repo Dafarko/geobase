@@ -29,18 +29,14 @@
                 <!-- form start -->
                 {!! Form::open(['route' => 'search-params', 'method' => 'post'])  !!}
                     <div class="box-body">
-                        {{--<div class="form-group">
-                            <label for="type">Выбирите то что будете искать</label>
-                            <select name="type">
-                                <option value="country">Страна</option>
-                                <option value="city">Нас. пункт</option>
-                            </select>
-                        </div>
                         <div class="form-group">
-                            <label for="name">Введите название</label>
-                            <input type="text" class="form-control" id="name" placeholder="Введите название">
-                        </div>--}}
-                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-xs-7">
+                                    <label for="code">Код страны</label>
+                                    <input type="text" class="form-control" name="code" id="code" placeholder="Введите код страны">
+                                </div>
+                            </div>
+                            <br>
                             <div class="row">
                                 <div class="col-xs-3">
                                     <laber for="pfrom"><strong>Население: От</strong></laber>

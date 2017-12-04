@@ -14,6 +14,7 @@
                 <h5 class="widget-user-desc">поиска</h5>
             </div>
         </div>
+    </div>
 
     <div class="row">
         <div class="col-xs-12">
@@ -25,13 +26,31 @@
                 <div class="box-body table-responsive no-padding">
                     <table class="table table-hover">
                         <tr>
+                            <th>Geo ID</th>
+                            <th>Название</th>
+                            <th>Код страны</th>
+                            <th>Lng</th>
+                            <th>Lat</th>
+                            <th>Название</th>
+                            <th>Название</th>
+                            <th>Название</th>
+                            <th>Название</th>
                             <th>Название</th>
                         </tr>
-                        <tr>
                             @foreach($countryInfo as $info)
-                                <td>{{ $info }}</td>
+                            <tr>
+                                <td>{!!  $info -> GeonameId !!}</td>
+                                <td>{!!  $info -> Name !!}</td>
+                                <td>{!!  $info -> CountryCode !!}</td>
+                                <td>{!!  $info -> Lng !!}</td>
+                                <td>{!!  $info -> Lat !!}</td>
+                                <td>{!!  $info -> FclName !!}</td>
+                                <td>{!!  $info -> ToponymName !!}</td>
+                                <td>{!!  $info -> FcodeName !!}</td>
+                                <td>{!!  $info -> Wikipedia !!}</td>
+                                <td>{!!  $info -> Population !!}</td>
+                            </tr>
                             @endforeach
-                        </tr>
                     </table>
                 </div>
                 <!-- /.box-body -->
@@ -39,7 +58,7 @@
             <!-- /.box -->
         </div>
     </div>
-    <div id="map"></div>
+{{--    <div id="map"></div>
     <script>
         function initMap() {
             var uluru = {lat: {{ $lat }}, lng: {{ $lng }}};
@@ -55,5 +74,5 @@
     </script>
     <script async defer
             src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAQSIzUItqXEdUbpBvp9TUBCMHZLuWU6oI&callback=initMap">
-    </script>
+    </script>--}}
 @stop

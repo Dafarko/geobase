@@ -14,27 +14,19 @@ class SearchController extends Controller
     {
 
         $curlSession = curl_init();
-        curl_setopt($curlSession, CURLOPT_URL, 'http://localhost:9000/countries');
-        curl_setopt($curlSession, CURLOPT_BINARYTRANSFER, true);
-        curl_setopt($curlSession, CURLOPT_RETURNTRANSFER, true);
-
-        $jsonParams = json_decode(curl_exec($curlSession));
-        curl_close($curlSession);
-
-        $row[] = '';
-        for ($i = 0; $i < count($jsonParams->result); $i++){
-            $curlSession = curl_init();
-            curl_setopt($curlSession, CURLOPT_URL, 'http://api.geonames.org/countryInfoJSON?formatted=true&lang=en&countryCode=' . $jsonParams->result[$i]->CountryCode . '&username=romaha&style=full');
+        if ($request->pfrom != "") {
+            curl_setopt($curlSession, CURLOPT_URL, 'http://localhost:9000/search/' . $request->pfrom . '/' . $request->pto);
+        } else {
+            curl_setopt($curlSession, CURLOPT_URL, 'http://localhost:9000/search-code/' . $request->code);
+        }
             curl_setopt($curlSession, CURLOPT_BINARYTRANSFER, true);
             curl_setopt($curlSession, CURLOPT_RETURNTRANSFER, true);
 
-            $jsonGeo = json_decode(curl_exec($curlSession));
+            $jsonParams = json_decode(curl_exec($curlSession));
             curl_close($curlSession);
-            if ((($jsonGeo->geonames[$i]->population) > ($request->pfrom)) && (($jsonGeo->geonames[$i]->population) < ($request->pto)))
-                $row[] = $jsonParams -> result[$i] -> CountryName;
-        }
 
-        $data = ['countryInfo' => $row -> CountryName];
+
+        $data = ['countryInfo' => $jsonParams -> result];
 
         return view('search.search-result', $data);
     }
