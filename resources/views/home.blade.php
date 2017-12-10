@@ -176,12 +176,7 @@
                     <!-- /.box-header -->
                     <div class="box-body">
                         <dl class="dl-horizontal">
-                            A description list is perfect for defining terms.
-                            Vestibulum id ligula porta felis euismod semper eget lacinia odio sem nec elit.
-                            Donec id elit non mi porta gravida at eget metus.
-                            Etiam porta sem malesuada magna mollis euismod.
-                            Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo
-                            sit amet risus.
+                            Информация о странах, поиск по названию; Информация о населенных пунктах; Информация о ближайщих нас. пунктах; Поиск нас. пунктов по параметрам;
                         </dl>
                     </div>
                     <!-- /.box-body -->
@@ -196,12 +191,9 @@
                         <!-- /.box-header -->
                         <div class="box-body">
                             <dl class="dl-horizontal">
-                                A description list is perfect for defining terms.
-                                Vestibulum id ligula porta felis euismod semper eget lacinia odio sem nec elit.
-                                Donec id elit non mi porta gravida at eget metus.
-                                Etiam porta sem malesuada magna mollis euismod.
-                                Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo
-                                sit amet risus.
+                                Чтобы перейти в нужный раздел поиска на главной странице наведите на интересующий вас блок, наведите на него и кликните по гиперссылке.
+                                В появивщейся форме введите нужные параметры. Названия вводятся на аглийском.
+                                Сайт предназначен для поиска географических обьектов.
                             </dl>
                         </div>
                         <!-- /.box-body -->
